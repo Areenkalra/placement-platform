@@ -1,0 +1,48 @@
+{
+  "users": [],
+  "history": [],
+  "activityLog": [
+    {
+      "id": "1777397598709",
+      "email": "user@example.com",
+      "action": "Virtual Twin Simulation",
+      "details": "Started a new what-if analysis session.",
+      "timestamp": "2026-04-28T17:33:18.709Z"
+    },
+    {
+      "id": "1777397598712",
+      "email": "user@example.com",
+      "action": "Virtual Twin Simulation",
+      "details": "Started a new what-if analysis session.",
+      "timestamp": "2026-04-28T17:33:18.712Z"
+    },
+    {
+      "id": "1777398220561",
+      "email": "user@example.com",
+      "action": "Virtual Twin Simulation",
+      "details": "Started a new what-if analysis session.",
+      "timestamp": "2026-04-28T17:43:40.561Z"
+    },
+    {
+      "id": "1777398220563",
+      "email": "user@example.com",
+      "action": "Virtual Twin Simulation",
+      "details": "Started a new what-if analysis session.",
+      "timestamp": "2026-04-28T17:43:40.563Z"
+    },
+    {
+      "id": "1777398251611",
+      "email": "user@example.com",
+      "action": "AI Job Match Scan",
+      "details": "Fetched real-time job postings matching profile skills.",
+      "timestamp": "2026-04-28T17:44:11.611Z"
+    },
+    {
+      "id": "1777398263024",
+      "email": "user@example.com",
+      "action": "AI Job Match Scan",
+      "details": "Fetched real-time job postings matching profile skills.",
+      "timestamp": "2026-04-28T17:44:23.024Z"
+    }
+  ]
+}
