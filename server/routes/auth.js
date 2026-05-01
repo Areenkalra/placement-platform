@@ -158,9 +158,9 @@ router.post('/forgot-password', async (req, res) => {
         }
 
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
-        otpStore[email] = { otp, expires: Date.now() + 10 * 60 * 1000 };
+        otps[email] = { otp, expires: Date.now() + 10 * 60 * 1000 };
 
-        await sendOTP(email, otp);
+        // await sendOTP(email, otp); // mock send
         res.json({ message: "Password reset OTP sent to email." });
     } catch (err) {
         console.error("Forgot Password Error:", err);
@@ -172,7 +172,7 @@ router.post('/forgot-password', async (req, res) => {
 router.post('/reset-password', async (req, res) => {
     const { email, otp, newPassword } = req.body;
     try {
-        const record = otpStore[email];
+        const record = otps[email];
         if (!record || record.otp !== otp || record.expires < Date.now()) {
             return res.status(400).json({ error: "Invalid or expired OTP." });
         }
@@ -191,7 +191,7 @@ router.post('/reset-password', async (req, res) => {
         writeDB(db);
 
         // Clean up OTP
-        delete otpStore[email];
+        delete otps[email];
 
         res.json({ message: "Password successfully reset." });
     } catch (err) {
