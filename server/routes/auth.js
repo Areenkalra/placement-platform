@@ -79,30 +79,23 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ error: 'Invalid credentials' });
     }
 
-    // Generate OTP
-    const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    otps[email] = {
-        otp,
-        user,
-        expires: Date.now() + 5 * 60 * 1000 // 5 mins
+    const payload = {
+      user: {
+        id: user._id || user.email,
+        name: user.name,
+        email: user.email
+      }
     };
 
-    try {
-        await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-            to: email,
-            subject: 'Your PlacementAI Login OTP',
-            text: `Your OTP for login is: ${otp}. It is valid for 5 minutes.`
-        });
-        console.log(`[OTP Status] Email successfully sent to ${email}`);
-    } catch (emailError) {
-        console.error("[OTP Status] Failed to send real email. Check your .env EMAIL_USER and EMAIL_PASS settings.");
-        console.log(`\n\n----------------------------------------`);
-        console.log(`[Mock SMS/Email] OTP for ${email}: ${otp}`);
-        console.log(`----------------------------------------\n\n`);
-    }
-
-    res.json({ step: 'otp_required', message: 'OTP sent to your registered contact.', email });
+    jwt.sign(
+      payload,
+      JWT_SECRET,
+      { expiresIn: 360000 },
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token, user: payload.user });
+      }
+    );
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Server error' });
