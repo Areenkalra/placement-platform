@@ -68,7 +68,7 @@ export default function InputForm() {
     pdfData.append('resume', file);
 
     try {
-      const res = await axios.post('http://localhost:5001/upload-resume', pdfData);
+      const res = await axios.post('https://python-ml-service-bku1.onrender.com/upload-resume', pdfData);
       const parsedData = res.data;
       
       setFormData(prev => ({
@@ -113,7 +113,7 @@ export default function InputForm() {
         technicalSkills: formData.technicalSkills.split(',').map(s => s.trim())
       };
       
-      const res = await axios.post('http://localhost:5000/api/predict', payload);
+      const res = await axios.post('https://node-server-jdys.onrender.com/api/predict', payload);
       navigate('/dashboard', { state: { result: res.data } });
     } catch (error) {
       console.error(error);

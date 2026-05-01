@@ -94,7 +94,7 @@ export default function MockInterview() {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:5001/analyze-interview', {
+      const res = await axios.post('https://python-ml-service-bku1.onrender.com/analyze-interview', {
         question: currentQuestion,
         answer: answer
       });

@@ -111,7 +111,7 @@ export default function JobMatch() {
     const fetchLiveJobs = async () => {
         setIsFetchingLive(true);
         try {
-            const res = await axios.post('http://localhost:5000/api/live/jobs', {
+            const res = await axios.post('https://node-server-jdys.onrender.com/api/live/jobs', {
                 skills: profile?.technicalSkills,
                 location: 'India'
             });

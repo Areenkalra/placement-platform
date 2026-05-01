@@ -12,7 +12,7 @@ export default function CompanyInsights() {
   const fetchInsight = async (tierName) => {
       setIsFetching(prev => ({...prev, [tierName]: true}));
       try {
-          const res = await axios.post('http://localhost:5000/api/live/insights', { companyTier: tierName });
+          const res = await axios.post('https://node-server-jdys.onrender.com/api/live/insights', { companyTier: tierName });
           setLiveInsights(prev => ({...prev, [tierName]: res.data.text }));
       } catch (err) {
           setLiveInsights(prev => ({...prev, [tierName]: 'Failed to fetch live insights. Ensure your GEMINI_API_KEY is configured in the backend.' }));

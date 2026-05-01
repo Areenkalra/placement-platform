@@ -40,7 +40,7 @@ export default function DigitalTwin() {
     const timer = setTimeout(async () => {
       try {
         setLoading(true);
-        const res = await axios.post('http://localhost:5001/predict', twinProfile);
+        const res = await axios.post('https://python-ml-service-bku1.onrender.com/predict', twinProfile);
         setTwinScore(res.data.probability);
       } catch (err) {
         console.error("Twin Predict Error:", err);

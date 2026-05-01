@@ -36,7 +36,7 @@ export default function ResumeUpgradation() {
     formData.append('jd', jdText);
 
     try {
-      const res = await axios.post('http://localhost:5001/analyze-resume-jd', formData);
+      const res = await axios.post('https://python-ml-service-bku1.onrender.com/analyze-resume-jd', formData);
       setResult(res.data);
       setEditedText(res.data.extractedText || "");
       logActivity("Resume Upgrader Analysis", `Analyzed resume "${resumeFile.name}" against target JD.`);
@@ -60,7 +60,7 @@ export default function ResumeUpgradation() {
     formData.append('jd', jdText);
 
     try {
-      const res = await axios.post('http://localhost:5001/analyze-resume-jd', formData);
+      const res = await axios.post('https://python-ml-service-bku1.onrender.com/analyze-resume-jd', formData);
       setResult(res.data);
       setEditedText(res.data.extractedText || editedText);
     } catch (err) {

@@ -19,7 +19,7 @@ export default function Auth() {
     setLoading(true);
     try {
       const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register';
-      const res = await axios.post(`http://localhost:5000${endpoint}`, formData);
+      const res = await axios.post(`https://node-server-jdys.onrender.com${endpoint}`, formData);
       
       if (isLogin) {
         if (res.data.step === 'otp_required') {
@@ -46,7 +46,7 @@ export default function Auth() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post(`http://localhost:5000/api/auth/verify-otp`, {
+      const res = await axios.post(`https://node-server-jdys.onrender.com/api/auth/verify-otp`, {
           email: formData.email,
           otp
       });
@@ -65,7 +65,7 @@ export default function Auth() {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post(`http://localhost:5000/api/auth/forgot-password`, { email: forgotEmail });
+      await axios.post(`https://node-server-jdys.onrender.com/api/auth/forgot-password`, { email: forgotEmail });
       setStep('reset-password');
       alert("OTP sent to your email!");
     } catch (err) {
@@ -79,7 +79,7 @@ export default function Auth() {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post(`http://localhost:5000/api/auth/reset-password`, { 
+      await axios.post(`https://node-server-jdys.onrender.com/api/auth/reset-password`, { 
         email: forgotEmail, 
         otp, 
         newPassword 

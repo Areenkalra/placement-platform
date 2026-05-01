@@ -18,7 +18,7 @@ export default function GlobalJobSearch() {
     setLoading(true);
     setHasSearched(true);
     try {
-      const res = await axios.post('http://localhost:5000/api/live/search', {
+      const res = await axios.post('https://node-server-jdys.onrender.com/api/live/search', {
         query: query.trim(),
         location: location.trim()
       });

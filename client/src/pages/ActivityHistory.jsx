@@ -11,7 +11,7 @@ export default function ActivityHistory() {
     const fetchHistory = async () => {
       try {
         const userEmail = localStorage.getItem('userEmail') || 'user@example.com';
-        const res = await axios.post('http://localhost:5000/api/activity/history', { email: userEmail });
+        const res = await axios.post('https://node-server-jdys.onrender.com/api/activity/history', { email: userEmail });
         setHistory(res.data);
       } catch (error) {
         console.error("Failed to fetch history", error);
