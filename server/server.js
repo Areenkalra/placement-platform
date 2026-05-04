@@ -34,10 +34,10 @@ app.post('/api/predict', async (req, res) => {
     // Call ML Service
     let mlResponse;
     try {
-      mlResponse = await axios.post('http://127.0.0.1:5001/predict', studentData);
+      mlResponse = await axios.post('https://python-ml-service-bku1.onrender.com/predict', studentData);
     } catch (error) {
        console.error("ML Service error:", error.message);
-       return res.status(500).json({ error: 'Failed to communicate with ML service. Is it running on port 5001?' });
+       return res.status(500).json({ error: 'Failed to communicate with ML service.' });
     }
 
     const { probability, readinessScore, skillGaps, recommendations } = mlResponse.data;
